@@ -1,4 +1,4 @@
-import chrtGeneric from '../chrtGeneric';
+import { chrtGeneric } from 'chrt-core';
 import {
   fill,
   size,
