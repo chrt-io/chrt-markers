@@ -5,9 +5,6 @@ import babel from '@rollup/plugin-babel';
 import {terser} from "rollup-plugin-terser";
 import * as meta from "./package.json";
 
-console.log('GLOBALS')
-console.log(Object.assign({}, ...Object.keys(meta.dependencies || {}).filter(key => /^chrt-/.test(key)).map(key => ({[key]: "chrt"}))))
-
 const config = {
   input: "src/index.js",
   external: Object.keys(meta.dependencies || {}).filter(key => /^chrt-/.test(key)),
