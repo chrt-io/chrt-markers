@@ -1,6 +1,6 @@
 {
   "name": "chrt-markers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Markers for XY charts component for Chrt",
   "main": "dist/chrt-markers.js",
   "module": "src/index.j",
