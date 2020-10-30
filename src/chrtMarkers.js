@@ -108,4 +108,8 @@ chrtMarkers.prototype = Object.assign(chrtMarkers.prototype, {
   firstAndLastMarkers
 });
 
-export default chrtMarkers;
+// export default chrtMarkers;
+
+export default function() {
+  return new chrtMarkers();
+}
