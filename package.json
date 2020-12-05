@@ -1,6 +1,6 @@
 {
   "name": "chrt-markers",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Markers for XY charts component for Chrt",
   "main": "dist/chrt-markers.js",
   "module": "dist/chrt-markers.esm.j",
