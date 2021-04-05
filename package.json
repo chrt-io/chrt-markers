@@ -15,6 +15,7 @@
   "scripts": {
     "test": "jest",
     "pretest": "rollup -c",
+    "postversion": "rollup -c",
     "build": "rollup -c",
     "lint": "eslint src --fix",
     "watch": "npm-watch"
@@ -36,7 +37,7 @@
   },
   "homepage": "chrt.io",
   "dependencies": {
-    "chrt-core": "^0.0.26"
+    "chrt-core": "^0.0.29"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
