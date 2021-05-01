@@ -8,8 +8,6 @@ import * as meta from "./package.json";
 const STARTED = 2020;
 const YEAR = (new Date).getFullYear();
 
-console.log(Object.assign({}, ...Object.keys(meta.dependencies || {}).filter(key => /^chrt-/.test(key)).map(key => ({[key]: "chrt"}))))
-
 const config = {
   input: "src/index.js",
   external: Object.keys(meta.dependencies || {}).filter(key => /^chrt-/.test(key)),
