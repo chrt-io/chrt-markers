@@ -1,5 +1,3 @@
-import { isNull } from '~/helpers';
-
 // showMarkers and hideTicks can get different type of parameters and they filter the markers based on the parameters
 export default function showMarkers(filter) {
   // default true
