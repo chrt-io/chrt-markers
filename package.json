@@ -14,11 +14,11 @@
   },
   "scripts": {
     "test": "jest",
-    "pretest": "rollup -c",
     "postversion": "rollup -c",
     "build": "rollup -c",
     "lint": "eslint src --fix",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "dev": "budo test/chrts/index.js:bundle.js --live --dir test/chrts  -- -t [ babelify --extensions .js ]"
   },
   "husky": {
     "hooks": {
@@ -37,20 +37,24 @@
   },
   "homepage": "chrt.io",
   "dependencies": {
-    "chrt-object": "0.0.2"
+    "chrt-object": "0.0.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
-    "@babel/preset-env": "^7.12.11",
-    "@rollup/plugin-babel": "^5.2.2",
-    "@rollup/plugin-node-resolve": "^11.0.1",
-    "babel-jest": "^26.6.3",
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-transform-modules-commonjs": "^7.14.5",
+    "@babel/plugin-transform-runtime": "^7.14.5",
+    "@babel/preset-env": "^7.14.5",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
+    "babel-jest": "^27.0.2",
     "babel-plugin-root-import": "^6.6.0",
-    "eslint": "^7.16.0",
+    "babelify": "^10.0.0",
+    "budo": "^11.6.4",
+    "chrt": "0.0.70",
+    "eslint": "^7.29.0",
     "husky": "4.3.0",
-    "jest": "^26.6.3",
-    "npm-watch": "^0.7.0",
+    "jest": "^27.0.4",
+    "npm-watch": "^0.10.0",
     "rollup": "2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
