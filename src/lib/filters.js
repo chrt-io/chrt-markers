@@ -3,7 +3,7 @@ import { isNull } from '~/helpers';
 // showMarkers and hideTicks can get different type of parameters and they filter the markers based on the parameters
 export default function showMarkers(filter) {
   // default true
-  if (isNull(filter)) {
+  if (typeof filter === 'undefined') {
     this.markersFilter = () => true;
     return this;
   }
@@ -36,6 +36,8 @@ export default function showMarkers(filter) {
     return this;
   }
 
+  // generic, valid for all other types, including null
+  this.markersFilter = d => filter === d;
   return this;
 }
 

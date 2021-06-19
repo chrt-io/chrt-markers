@@ -4,6 +4,8 @@ import {
   size,
   stroke,
   strokeWidth,
+  strokeOpacity,
+  fillOpacity,
   showMarkers,
   hideMarkers,
   firstMarker,
@@ -27,19 +29,26 @@ function chrtMarkers() {
   this.g = null;
   this.markersFilter = () => true;
 
+  this.attr('strokeWidth', null);
+  this.attr('stroke', null);
+  this.attr('strokeOpacity', null);
+  this.attr('fill', null);
+  this.attr('fillOpacity', null);
+  this.attr('radius', DEFAULT_RADIUS);
+
   this.draw = () => {
     // console.log('DRAW MARKERS', this.parentNode.data(), this.parentNode.parentNode._data);
     // console.log(this)
     const parentData = this.parentNode.data();
     // this might be broken when only local data to the component is updated - to be tested
-    const data= parentData.length ? parentData : (this.parentNode.parentNode._data || []);
-    const radius = this._radius || DEFAULT_RADIUS;
-    const fill = this._fill || this.parentNode.stroke || DEFAULT_FILL_COLOR;
-    const opacity = this._opacity || this.parentNode.strokeOpacity || DEFAULT_FILL_OPACITY;
-    const stroke = this._stroke || this.parentNode.stroke || DEFAULT_STROKE;
-    const strokeOpacity = this._strokeOpacity || this.parentNode.strokeOpacity || DEFAULT_STROKE_OPACITY;
+    const data = parentData.length ? parentData : (this.parentNode.parentNode._data || []);
+    const radius = this.size()();
+    const fill = this.fill()() || this.parentNode.stroke()() || DEFAULT_FILL_COLOR;
+    const opacity = this.fillOpacity()() || this.parentNode.strokeOpacity()() || DEFAULT_FILL_OPACITY;
+    const stroke = this.stroke()() || this.parentNode.stroke()() || DEFAULT_STROKE;
+    const strokeOpacity = this.strokeOpacity()() || this.parentNode.strokeOpacity()() || DEFAULT_STROKE_OPACITY;
     const strokeWidth =
-      this._strokeWidth || this.parentNode.strokeWidth || DEFAULT_STROKE_WIDTH;
+      this.strokeWidth()() || this.parentNode.strokeWidth()() || DEFAULT_STROKE_WIDTH;
 
     if (!this.g) {
       this.g = create('g');
@@ -88,7 +97,7 @@ function chrtMarkers() {
         d.circle.setAttribute('stroke-opacity', strokeOpacity);
       });
 
-    return this.parentNode;
+    return this; // .parentNode;
   };
 }
 
@@ -99,9 +108,13 @@ chrtMarkers.parent = chrtGeneric.prototype;
 chrtMarkers.prototype = Object.assign(chrtMarkers.prototype, {
   fill,
   size,
+  radius: size,
   stroke,
   strokeWidth,
+  strokeOpacity,
+  fillOpacity,
   showMarkers,
+  filter: showMarkers,
   hideMarkers,
   firstMarker,
   lastMarker,
