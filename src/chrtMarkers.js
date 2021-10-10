@@ -1,4 +1,4 @@
-import chrtGeneric from 'chrt-object';
+import chrtObject from 'chrt-object';
 import {
   fill,
   size,
@@ -22,7 +22,7 @@ const DEFAULT_STROKE_WIDTH = 1;
 const DEFAULT_FILL_OPACITY = 1;
 
 function chrtMarkers() {
-  chrtGeneric.call(this);
+  chrtObject.call(this);
   // console.log('HI WE ARE MARKERS', this);
   this.type = 'markers';
   this.markers = [];
@@ -101,9 +101,9 @@ function chrtMarkers() {
   };
 }
 
-chrtMarkers.prototype = Object.create(chrtGeneric.prototype);
+chrtMarkers.prototype = Object.create(chrtObject.prototype);
 chrtMarkers.prototype.constructor = chrtMarkers;
-chrtMarkers.parent = chrtGeneric.prototype;
+chrtMarkers.parent = chrtObject.prototype;
 
 chrtMarkers.prototype = Object.assign(chrtMarkers.prototype, {
   fill,
