@@ -12,7 +12,7 @@ import {
   lastMarker,
   firstAndLastMarkers
 } from './lib';
-import { createSVG as create } from '~/layout';
+import { createSVG as create } from './layout';
 
 const DEFAULT_RADIUS = 2;
 const DEFAULT_FILL_COLOR = '#000';

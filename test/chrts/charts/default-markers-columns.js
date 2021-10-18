@@ -1,5 +1,5 @@
 import * as chrt from 'chrt';
-import chrtMarkers from '~/chrtMarkers'
+import chrtMarkers from '../../../src/chrtMarkers'
 
 const data = [0,2,6,2,5,9,4,5].map((d,i) => ({x:i,y:d}));
 
