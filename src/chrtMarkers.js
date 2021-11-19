@@ -1,4 +1,4 @@
-import chrtObject from 'chrt-object';
+import chrtObject, { utils } from 'chrt-object';
 import {
   fill,
   size,
@@ -12,7 +12,7 @@ import {
   lastMarker,
   firstAndLastMarkers
 } from './lib';
-import { createSVG as create } from './layout';
+const { createSVG: create } = utils;
 
 const DEFAULT_RADIUS = 2;
 const DEFAULT_FILL_COLOR = '#000';
@@ -36,6 +36,8 @@ function chrtMarkers() {
   this.attr('fillOpacity', null);
   this.attr('radius', DEFAULT_RADIUS);
 
+  this._classNames = ['chrt-markers'];
+
   this.draw = () => {
     // console.log('DRAW MARKERS', this.parentNode.data(), this.parentNode.parentNode._data);
     // console.log(this)
@@ -54,6 +56,9 @@ function chrtMarkers() {
       this.g = create('g');
       this.parentNode.g.appendChild(this.g);
     }
+
+    this.g.classList.remove(...this.g.classList)
+    this.g.classList.add(...this._classNames);
 
     data.forEach((marker, i) => {
       if (this.markers[i]) {
