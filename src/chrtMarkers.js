@@ -1,4 +1,4 @@
-import chrtObject, { utils } from 'chrt-object';
+import chrtObject, { utils, cssDisplay } from 'chrt-object';
 import {
   fill,
   size,
@@ -54,10 +54,13 @@ function chrtMarkers() {
 
     if (!this.g) {
       this.g = create('g');
+      // console.log('---> appending markers to ', this.parentNode)
       this.parentNode.g.appendChild(this.g);
     }
 
-    this.g.classList.remove(...this.g.classList)
+    cssDisplay.call(this, this.attr('display')());
+
+    this.g.classList.remove(...this.g.classList);
     this.g.classList.add(...this._classNames);
 
     data.forEach((marker, i) => {
