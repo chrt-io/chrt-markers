@@ -1,8 +1,15 @@
-import babel from "@rollup/plugin-babel";
 import commonjs from "rollup-plugin-commonjs";
-import resolve from "rollup-plugin-node-resolve";
+import resolve from "@rollup/plugin-node-resolve";
+import babel from "@rollup/plugin-babel";
 import terser from "@rollup/plugin-terser";
-import meta from "./package.json" assert { type: "json" };
+// assert import for JSON files
+// import { default as meta } from './package.json' assert {
+//   type: 'json',
+// };
+import { readFile } from "fs/promises";
+const meta = JSON.parse(
+  await readFile(new URL("./package.json", import.meta.url)),
+);
 
 const STARTED = 2020;
 const YEAR = new Date().getFullYear();
@@ -19,7 +26,9 @@ const config = {
     indent: false,
     extend: true,
     exports: "named",
-    banner: `// ${meta.name} v${meta.version} Copyright ${YEAR !== STARTED ? `${STARTED}-` : ""}${YEAR} ${meta.author} ${meta.homepage}`,
+    banner: `// ${meta.name} v${meta.version} Copyright ${
+      YEAR !== STARTED ? `${STARTED}-` : ""
+    }${YEAR} ${meta.author} ${meta.homepage}`,
     globals: Object.assign(
       {},
       ...Object.keys(meta.dependencies || {})
@@ -65,4 +74,13 @@ export default [
       }),
     ],
   },
+  // {
+  //   ...config,
+  //   output: {
+  //     ...config.output,
+  //     format: 'cjs',
+  //     file: `dist/${meta.name}.node.js`
+  //   },
+  //   plugins: [...config.plugins]
+  // }
 ];
