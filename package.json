@@ -42,12 +42,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/chrt/chrt-markers.git"
+    "url": "git+ssh://git@github.com/chrt-io/chrt-markers.git"
   },
   "author": "chrt",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/chrt/chrt-markers/issues"
+    "url": "https://github.com/chrt-io/chrt-markers/issues"
   },
   "homepage": "chrt.io",
   "dependencies": {
