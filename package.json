@@ -1,6 +1,6 @@
 {
   "name": "chrt-markers",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Markers for XY charts component for Chrt",
   "type": "module",
   "main": "src/index.js",
